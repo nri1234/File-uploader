@@ -12,7 +12,13 @@ exports.upload = function(request, response) {
         response.end();
     });
 };
-
+exports.css = function(request, response) {
+    fs.readFile("css/style.css", function(error, file) {
+        response.writeHead(200, { "Content-Type": "text/css" });
+        response.write(file, "binary");
+        response.end();
+    });
+};
 exports.welcome = function(request, response) {
     console.log("Rozpoczynam obsługę żądania welcome.");
     fs.readFile("templates/start.html", function(err, html) {
